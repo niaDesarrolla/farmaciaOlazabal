@@ -1,5 +1,6 @@
 const Medicamento = require('../models/medicamento')
  
+
 const MedicamentosGet = async (req, res) => {
   try {
     const medicamentoId = req.params.id;
@@ -19,6 +20,26 @@ const MedicamentosGet = async (req, res) => {
   }
 };
 
+const MedicamentosGetById = async (req, res) => {
+  try {
+    const medicamentoId = req.params.id;
+    
+    // Utilizamos el modelo Medicamento y el método findById() para buscar el medicamento por su ID
+    const medicamentoEncontrado = await Medicamento.findById(medicamentoId);
+
+    if (!medicamentoEncontrado) {
+      return res.status(404).json({ error: 'Medicamento no encontrado' });
+    }
+
+    // Devolvemos la información del medicamento encontrado en la respuesta
+    res.json(medicamentoEncontrado);
+  } catch (error) {
+    console.error('Error al obtener el medicamento por ID:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
+
 const MedicamentosPost = async (req, res) => {
   try {
     const nuevoMedicamento = req.body;
@@ -36,6 +57,7 @@ const MedicamentosPost = async (req, res) => {
 
 module.exports = {
   MedicamentosGet,
+  MedicamentosGetById,
   MedicamentosPost,
 };
 

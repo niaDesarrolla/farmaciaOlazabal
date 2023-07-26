@@ -44,6 +44,7 @@ class Server {
   routes() {
     this.app.use(this.medicamentosPath, require("../routes/medicamentos.js"));
     //this.app.use(this.mathPath, require('../routes/maths')); //cuando se acceda a esta ruta, requiera todos los valores que necesita desde routes math
+   
   }
 
   listen() {

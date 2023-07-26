@@ -31,6 +31,10 @@ const MedicamentoSchema = new Schema({
   },
   fecha_vencimiento: {
     type: Date,
+  },
+  activo: {
+    type: Boolean,
+    default: true // Valor predeterminado, si no se proporciona al crear un nuevo documento.
   }
 });
 

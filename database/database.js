@@ -9,6 +9,7 @@ const dbConnection = async()=>{ //función que ejecuta la conexion a la base de 
 }catch (error){
    console.log(error);
    throw new Error('Error a la hora de iniciar la base de datos')
+   //para que me muestre el error 
   }
 };
 
